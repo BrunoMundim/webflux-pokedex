@@ -12,19 +12,42 @@ public class Pokemon {
     private String id;
     private String nome;
     private String categoria;
-    private String habilidade;
+    private String habilidades;
     private Double peso;
 
     public Pokemon() {
-        super();
     }
 
-    public Pokemon(String id, String nome, String categoria, String habilidade, Double peso) {
+    public Pokemon(String id, String nome, String categoria, String habilidades, Double peso) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
-        this.habilidade = habilidade;
+        this.habilidades = habilidades;
         this.peso = peso;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pokemon pokemon = (Pokemon) o;
+        return Objects.equals(id, pokemon.id) && Objects.equals(nome, pokemon.nome) && Objects.equals(categoria, pokemon.categoria) && Objects.equals(habilidades, pokemon.habilidades) && Objects.equals(peso, pokemon.peso);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, categoria, habilidades, peso);
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", habilidades='" + habilidades + '\'' +
+                ", peso=" + peso +
+                '}';
     }
 
     public String getId() {
@@ -51,12 +74,12 @@ public class Pokemon {
         this.categoria = categoria;
     }
 
-    public String getHabilidade() {
-        return habilidade;
+    public String getHabilidades() {
+        return habilidades;
     }
 
-    public void setHabilidade(String habilidade) {
-        this.habilidade = habilidade;
+    public void setHabilidades(String habilidades) {
+        this.habilidades = habilidades;
     }
 
     public Double getPeso() {
@@ -65,34 +88,5 @@ public class Pokemon {
 
     public void setPeso(Double peso) {
         this.peso = peso;
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-    @Override
-    public String toString() {
-        return "Pokemon{" +
-                "id='" + id + '\'' +
-                ", nome='" + nome + '\'' +
-                ", categoria='" + categoria + '\'' +
-                ", habilidade='" + habilidade + '\'' +
-                ", peso=" + peso +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Pokemon pokemon = (Pokemon) o;
-        return Objects.equals(id, pokemon.id) && Objects.equals(nome, pokemon.nome) && Objects.equals(categoria, pokemon.categoria) && Objects.equals(habilidade, pokemon.habilidade) && Objects.equals(peso, pokemon.peso);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nome, categoria, habilidade, peso);
     }
 }
